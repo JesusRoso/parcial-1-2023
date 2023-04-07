@@ -1,4 +1,4 @@
 package com.parcial_procesos.vehiculos.controllers;
 
-public class VehiclesController {
+public class VehicleController {
 }

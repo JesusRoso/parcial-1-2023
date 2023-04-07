@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 
-public class Vehicles {
+public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
