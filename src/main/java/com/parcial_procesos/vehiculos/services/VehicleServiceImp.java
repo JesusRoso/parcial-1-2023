@@ -15,17 +15,6 @@ public class VehicleServiceImp implements VehicleService {
     }
 
     @Override
-    public Boolean createVehicle(Vehicle vehicle) {
-        try{
-            vehicleRepository.save(vehicle);
-            return true;
-        }
-        catch (Exception e){
-            return  false;
-        }
-    }
-
-    @Override
     public List<Vehicle> allVehicles() {
         return vehicleRepository.findAll();
     }
