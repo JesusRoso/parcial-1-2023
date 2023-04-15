@@ -7,5 +7,6 @@ import java.util.List;
 public interface VehicleService {
     Vehicle getVehicle(Long id);
     List<Vehicle> allVehicles();
+    Boolean createVehicle (Vehicle vehicle);
     Boolean updateVehicle(Long id, Vehicle vehicle);
 }
