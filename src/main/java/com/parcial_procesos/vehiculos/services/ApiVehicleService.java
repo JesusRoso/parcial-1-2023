@@ -5,5 +5,5 @@ import com.parcial_procesos.vehiculos.models.Vehicle;
 import java.util.List;
 
 public interface ApiVehicleService {
-    Boolean saveVehicle();
+    Boolean saveVehicle(Long id);
 }

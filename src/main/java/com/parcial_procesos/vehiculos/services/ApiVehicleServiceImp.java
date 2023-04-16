@@ -1,28 +1,33 @@
 package com.parcial_procesos.vehiculos.services;
 
 import com.parcial_procesos.vehiculos.models.Vehicle;
+import com.parcial_procesos.vehiculos.models.VehicleList;
 import com.parcial_procesos.vehiculos.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-
+@Service
 public class ApiVehicleServiceImp implements ApiVehicleService {
-
     @Autowired
     private VehicleRepository vehicleRepository;
     @Override
-    public Boolean saveVehicle() {
+    public Boolean saveVehicle(Long id) {
+        //http://localhost:8088/saveVehicle
+        //String urlApi = "https://myfakeapi.com/api/cars/"+id+"";
         String urlApi = "https://myfakeapi.com/api/cars/";
         RestTemplate restTemplate = new RestTemplate();
-        List<Vehicle> listOfCars = restTemplate.getForObject(urlApi, List.class);
-        for (Vehicle cars: listOfCars) {
+        VehicleList listOfCars = restTemplate.getForObject(urlApi, VehicleList.class);
+        for (Vehicle cars: listOfCars.getCars()) {
             try {
-                vehicleRepository.save(cars);
+                if(cars.getId().equals(id)){
+                    vehicleRepository.save(cars);
+                    return true;
+                }
             }catch (Exception e){
                 return false;
             }
         }
-        return true;
+        return false;
     }
 }

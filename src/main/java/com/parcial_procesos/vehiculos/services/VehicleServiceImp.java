@@ -3,12 +3,16 @@ package com.parcial_procesos.vehiculos.services;
 import com.parcial_procesos.vehiculos.models.Vehicle;
 import com.parcial_procesos.vehiculos.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class VehicleServiceImp implements VehicleService {
     @Autowired
     private VehicleRepository vehicleRepository;
+    @Autowired
+    private ApiVehicleServiceImp apiVehicleServiceImp;
     @Override
     public Vehicle getVehicle(Long id) {
         return vehicleRepository.findById(id).get();
@@ -20,10 +24,9 @@ public class VehicleServiceImp implements VehicleService {
     }
 
     @Override
-    public Boolean createVehicle(Vehicle vehicle){
+    public Boolean createVehicle(Long id){
         try{
-            vehicleRepository.save(vehicle);
-            return true;
+            return apiVehicleServiceImp.saveVehicle(id);
         }
         catch (Exception e){
             return false;
@@ -34,10 +37,10 @@ public class VehicleServiceImp implements VehicleService {
         try{
             Vehicle vehicleBD = vehicleRepository.findById(id).get();
             vehicleBD.setCar(vehicle.getCar());
-            vehicleBD.setCarModel(vehicle.getCarModel());
-            vehicleBD.setCarColor(vehicle.getCarColor());
-            vehicleBD.setCarModelYear(vehicle.getCarModelYear());
-            vehicleBD.setCarVin(vehicle.getCarVin());
+            vehicleBD.setCar_model(vehicle.getCar_model());
+            vehicleBD.setCar_color(vehicle.getCar_color());
+            vehicleBD.setCar_model_year(vehicle.getCar_model_year());
+            vehicleBD.setCar_vin(vehicle.getCar_vin());
             vehicleBD.setPrice(vehicle.getPrice());
             vehicleBD.setAvailability(vehicle.getAvailability());
             return true;

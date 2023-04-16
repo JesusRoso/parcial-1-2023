@@ -9,17 +9,16 @@ import javax.persistence.*;
 
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String car;
     @Column(name="car_model")
-    private String carModel;
+    private String car_model;
     @Column(name="car_color")
-    private String carColor;
+    private String car_color;
     @Column(name="car_model_year")
-    private Integer carModelYear;
+    private Integer car_model_year;
     @Column(name="car_vin")
-    private String carVin;
+    private String car_vin;
     private String price;
     private Boolean availability;
 

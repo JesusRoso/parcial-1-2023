@@ -1,12 +1,11 @@
 package com.parcial_procesos.vehiculos.controllers;
 
+import com.parcial_procesos.vehiculos.models.Vehicle;
 import com.parcial_procesos.vehiculos.services.VehicleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,4 +39,19 @@ public class VehicleController {
         }
 
     }
+
+    @PostMapping (value = "/saveVehicle/{id}")
+    public ResponseEntity saveVehicle(@PathVariable Long id){
+        Map response = new HashMap();
+        Boolean userResp = vehicleServiceImp.createVehicle(id);
+        if(userResp){
+            response.put("status","201");
+            response.put("message", "Vehicle created successfully");
+            return new ResponseEntity(response, HttpStatus.CREATED);
+        }
+        response.put("status", "400");
+        response.put("message", "error creating vehicle");
+        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+    }
+
 }
