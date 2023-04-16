@@ -53,5 +53,17 @@ public class VehicleController {
         response.put("message", "error creating vehicle");
         return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
-
+    @PutMapping(value = "/updateVehicle/{id}")
+    public ResponseEntity updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle){
+        Map response = new HashMap();
+        Boolean vehicleResp = vehicleServiceImp.updateVehicle(id, vehicle);
+        if(vehicleResp){
+            response.put("status","200");
+            response.put("message", "vehicle updated successfully");
+            return new ResponseEntity(response, HttpStatus.CREATED);
+        }
+        response.put("status", "400");
+        response.put("message", "error updating vehicle");
+        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+    }
 }

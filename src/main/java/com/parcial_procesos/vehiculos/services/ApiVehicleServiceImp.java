@@ -13,8 +13,6 @@ public class ApiVehicleServiceImp implements ApiVehicleService {
     private VehicleRepository vehicleRepository;
     @Override
     public Boolean saveVehicle(Long id) {
-        //http://localhost:8088/saveVehicle
-        //String urlApi = "https://myfakeapi.com/api/cars/"+id+"";
         String urlApi = "https://myfakeapi.com/api/cars/";
         RestTemplate restTemplate = new RestTemplate();
         VehicleList listOfCars = restTemplate.getForObject(urlApi, VehicleList.class);

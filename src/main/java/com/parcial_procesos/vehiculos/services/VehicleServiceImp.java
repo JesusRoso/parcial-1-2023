@@ -43,6 +43,7 @@ public class VehicleServiceImp implements VehicleService {
             vehicleBD.setCar_vin(vehicle.getCar_vin());
             vehicleBD.setPrice(vehicle.getPrice());
             vehicleBD.setAvailability(vehicle.getAvailability());
+            vehicleRepository.save(vehicleBD);
             return true;
         }
         catch (Exception e){
