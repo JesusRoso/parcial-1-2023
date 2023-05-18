@@ -40,7 +40,6 @@ public class VehicleServiceImp implements VehicleService {
             vehicleBD.setCar_model(vehicle.getCar_model());
             vehicleBD.setCar_color(vehicle.getCar_color());
             vehicleBD.setCar_model_year(vehicle.getCar_model_year());
-            vehicleBD.setCar_vin(vehicle.getCar_vin());
             vehicleBD.setPrice(vehicle.getPrice());
             vehicleBD.setAvailability(vehicle.getAvailability());
             vehicleRepository.save(vehicleBD);
