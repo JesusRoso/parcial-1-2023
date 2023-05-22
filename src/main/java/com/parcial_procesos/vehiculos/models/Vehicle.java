@@ -21,5 +21,6 @@ public class Vehicle {
     private String car_vin;
     private String price;
     private Boolean availability;
-
+    @ManyToOne
+    private User user;
 }

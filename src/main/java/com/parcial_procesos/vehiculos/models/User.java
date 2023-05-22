@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @Entity
@@ -24,5 +25,6 @@ public class User {
     private String password;
     @Column(length = 30)
     private Date birthday;
-
+    @OneToMany(mappedBy = "user")
+    private Set<Vehicle> vehicle;
 }

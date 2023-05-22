@@ -14,15 +14,18 @@ import org.springframework.web.client.RestTemplate;
 public class ApiVehicleServiceImp implements ApiVehicleService {
     @Autowired
     private VehicleRepository vehicleRepository;
+    @Autowired
+    private UserService userService;
     @Override
     public Boolean saveVehicle(Long id) throws JsonProcessingException {
         String urlApi = "https://myfakeapi.com/api/cars/"+id;
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> car = restTemplate.getForEntity(urlApi, String.class);
         ObjectMapper objectMapper = new ObjectMapper();
-
+        Long id_user = 1L;
         Vehicle vehicle = objectMapper.readValue(car.getBody().substring(7), Vehicle.class);
         if(vehicleRepository.findById(id).isEmpty()){
+            vehicle.setUser(userService.getUser(id_user));
             vehicleRepository.save(vehicle);
             return true;
         }
