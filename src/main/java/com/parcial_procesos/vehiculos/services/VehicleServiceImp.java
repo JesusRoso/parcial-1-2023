@@ -24,9 +24,9 @@ public class VehicleServiceImp implements VehicleService {
     }
 
     @Override
-    public Boolean createVehicle(Long id){
+    public Boolean createVehicle(Long id, Long id_user){
         try{
-            return apiVehicleServiceImp.saveVehicle(id);
+            return apiVehicleServiceImp.saveVehicle(id, id_user);
         }
         catch (Exception e){
             return false;

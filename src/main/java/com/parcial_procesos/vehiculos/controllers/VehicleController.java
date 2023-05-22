@@ -40,10 +40,10 @@ public class VehicleController {
 
     }
 
-    @PostMapping (value = "/saveVehicle/{id}")
-    public ResponseEntity saveVehicle(@PathVariable Long id){
+    @PostMapping (value = "/saveVehicle/{id}/{id_user}")
+    public ResponseEntity saveVehicle(@PathVariable Long id,@PathVariable Long id_user){
         Map<String, String> response = new HashMap<>();
-        Boolean vehicleResp = vehicleServiceImp.createVehicle(id);
+        Boolean vehicleResp = vehicleServiceImp.createVehicle(id, id_user);
         if(vehicleResp){
             response.put("status","201");
             response.put("message", "Vehicle created successfully");

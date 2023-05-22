@@ -6,5 +6,5 @@ import com.parcial_procesos.vehiculos.models.Vehicle;
 import java.util.List;
 
 public interface ApiVehicleService {
-    Boolean saveVehicle(Long id) throws JsonProcessingException;
+    Boolean saveVehicle(Long id, Long id_user) throws JsonProcessingException;
 }
