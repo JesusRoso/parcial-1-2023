@@ -4,6 +4,7 @@ import com.parcial_procesos.vehiculos.models.Vehicle;
 import com.parcial_procesos.vehiculos.services.VehicleServiceImp;
 import com.parcial_procesos.vehiculos.utils.Constants;
 import com.parcial_procesos.vehiculos.utils.JWTUtil;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
+@Api( tags = "Vehicle")
 public class VehicleController {
     @Autowired
     private VehicleServiceImp vehicleServiceImp;

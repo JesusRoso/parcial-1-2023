@@ -5,6 +5,7 @@ import com.parcial_procesos.vehiculos.services.UserService;
 import com.parcial_procesos.vehiculos.services.UserServiceImp;
 import com.parcial_procesos.vehiculos.utils.ApiResponse;
 import com.parcial_procesos.vehiculos.utils.Constants;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin
+@Api( tags = "Auth")
 public class AuthController {
     @Autowired
     private UserService userService;
